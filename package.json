@@ -1,0 +1,18 @@
+{
+  "name": "linktree-natan",
+  "version": "1.0.0",
+  "description": "Homepage Linktree moderna e de alta conversão para Natan",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/**/*.test.mjs"
+  },
+  "keywords": [
+    "linktree",
+    "bio",
+    "instagram",
+    "tiktok",
+    "whatsapp"
+  ],
+  "author": "Natan",
+  "license": "MIT"
+}

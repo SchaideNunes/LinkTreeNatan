@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>Natan • Links Oficiais</title>
+  <meta name="description" content="Acesse todos os links oficiais de Natan: WhatsApp, Instagram, TikTok e mais.">
+
+  <!-- Open Graph / Redes Sociais / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Natan • Links Oficiais">
+  <meta property="og:description" content="Acesse meus links oficiais, redes sociais e canais exclusivos.">
+  <meta property="og:image" content="assets/avatar.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Tipografia Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Barra Superior de Ações -->
+    <header class="top-actions-bar">
+      <button id="subscribeBtn" class="subscribe-btn" type="button" aria-label="Inscrever-se">
+        <span class="btn-icon" id="subscribeIcon"></span>
+        <span id="subscribeText">Subscribe</span>
+      </button>
+
+      <button id="shareBtn" class="icon-action-btn" type="button" aria-label="Compartilhar">
+        <span id="shareIcon"></span>
+      </button>
+    </header>
+
+    <!-- Perfil Central -->
+    <main>
+      <section class="profile-section">
+        <div class="avatar-wrapper">
+          <img id="profileAvatar" class="profile-avatar" src="assets/avatar.svg" alt="Foto de Perfil" width="96" height="96">
+        </div>
+
+        <h1 id="profileTitle" class="profile-title">Natan</h1>
+
+        <!-- Alerta para Navegadores In-App (Instagram/TikTok/Facebook) -->
+        <div id="noticeCard" class="inapp-notice-card" role="note">
+          👉 SE NÃO ABRIR, CLIQUE NOS 3 PONTINHOS E ABRA NO NAVEGADOR!
+        </div>
+
+        <!-- Barra de Ícones Rápidos das Redes Sociais -->
+        <nav id="socialsBar" class="socials-bar" aria-label="Redes Sociais"></nav>
+      </section>
+
+      <!-- Lista de Botões de Links Principais -->
+      <section id="linksContainer" class="links-list" aria-label="Links em destaque"></section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer-section">
+      <p id="footerText">Natan © 2026 • Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <!-- Modal de Inscrição / Captura de Contato -->
+  <div id="subscribeModal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="subscribeModalTitle">
+    <div class="modal-card">
+      <button id="closeSubscribeModal" class="modal-close-btn" type="button" aria-label="Fechar modal">&times;</button>
+      <h2 id="subscribeModalTitle" class="modal-title">Receba Novidades & Promoções</h2>
+      <p id="subscribeModalSubtitle" class="modal-subtitle">Cadastre-se para receber promoções exclusivas diretamente no seu WhatsApp ou e-mail.</p>
+      
+      <form id="subscribeForm" class="modal-form">
+        <input type="text" id="subscribeInput" class="modal-input" placeholder="Seu WhatsApp ou E-mail" required>
+        <button type="submit" id="subscribeSubmitBtn" class="modal-submit-btn">Quero Receber</button>
+      </form>
+
+      <p id="modalFeedback" class="modal-feedback"></p>
+    </div>
+  </div>
+
+  <!-- Toast Flutuante de Link Copiado -->
+  <div id="toastNotice" class="toast-notice" role="alert" aria-live="polite">
+    <span id="toastIcon"></span>
+    <span id="toastMessage">Link copiado com sucesso!</span>
+  </div>
+
+  <!-- Scripts ESM -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
