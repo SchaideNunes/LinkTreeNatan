@@ -13,7 +13,7 @@ export const linktreeConfig = {
     handle: "@natan",
     bio: "Ofertas exclusivas, conteúdos e novidades em primeira mão",
     statusBadge: "Online agora",
-    avatar: "assets/avatar.svg",
+    avatar: "/assets/avatar.svg",
     // Aviso elegante exibido abaixo da bio para evitar bloqueios dos navegadores internos do Instagram/TikTok
     noticeText: "💡 Dica: Toque nos 3 pontinhos e abra no NAVEGADOR para navegar sem limites",
     // Badge de verificado ao lado do nome (true / false)
