@@ -44,12 +44,20 @@
           <img id="profileAvatar" class="profile-avatar" src="assets/avatar.svg" alt="Foto de Perfil" width="96" height="96">
         </div>
 
-        <h1 id="profileTitle" class="profile-title">Natan</h1>
-
-        <!-- Alerta para Navegadores In-App (Instagram/TikTok/Facebook) -->
-        <div id="noticeCard" class="inapp-notice-card" role="note">
-          👉 SE NÃO ABRIR, CLIQUE NOS 3 PONTINHOS E ABRA NO NAVEGADOR!
+        <div class="profile-title-container">
+          <h1 id="profileTitle" class="profile-title">Natan</h1>
+          <span id="verifiedBadge" class="verified-badge"></span>
         </div>
+
+        <p id="profileBio" class="profile-bio"></p>
+
+        <div id="statusBadge" class="profile-status-pill">
+          <span class="status-dot"></span>
+          <span id="statusText" class="status-text">Online</span>
+        </div>
+
+        <!-- Alerta Discreto e Elegante para Navegadores In-App -->
+        <div id="noticeCard" class="inapp-notice-card" role="note"></div>
 
         <!-- Barra de Ícones Rápidos das Redes Sociais -->
         <nav id="socialsBar" class="socials-bar" aria-label="Redes Sociais"></nav>

@@ -1,40 +1,43 @@
 /* ==========================================================================
    Design System & Tokens - LinkTreeNatan
-   Estilo escuro premium inspirado na referência Beacons/Linktree
+   Estilo escuro moderno, exclusivo e autoral (anti-cópia)
    ========================================================================== */
 
 :root {
-  --bg-color: #000000;
-  --bg-surface: #121212;
-  --bg-card: #ffffff;
-  --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-dark: #111827;
-  --text-notice: #f3f4f6;
-
-  --border-subtle: rgba(255, 255, 255, 0.12);
-  --border-hover: rgba(255, 255, 255, 0.28);
+  --bg-color: #07080b;
+  --bg-surface: #0f1117;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.075);
   
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dark: #0f172a;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.22);
+  --border-highlight: rgba(56, 189, 248, 0.4);
+
   --brand-whatsapp: #25D366;
   --brand-telegram: #229ED9;
-  --brand-tiktok: #010101;
+  --brand-tiktok: #000000;
   --brand-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 
   --radius-full: 9999px;
   --radius-xl: 18px;
-  --radius-lg: 14px;
-  --radius-md: 10px;
+  --radius-card: 16px;
+  --radius-badge: 12px;
+  --radius-sm: 8px;
 
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 220ms cubic-bezier(0.16, 1, 0.3, 1);
   
-  --shadow-card: 0 4px 14px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 8px 24px rgba(255, 255, 255, 0.14);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.04);
 }
 
-/* Reset básico e tipografia */
+/* Reset básico */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -52,12 +55,17 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fundo com aura sutil de iluminação ambiente */
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 24px);
+  padding: env(safe-area-inset-top, 16px) 16px env(safe-area-inset-bottom, 28px);
+  background-image: 
+    radial-gradient(circle at 50% 100px, rgba(56, 189, 248, 0.08) 0%, rgba(168, 85, 247, 0.04) 35%, transparent 70%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   overflow-x: hidden;
 }
 
@@ -77,30 +85,35 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 4px 20px;
+  padding: 12px 4px 18px;
   width: 100%;
 }
 
 .subscribe-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   padding: 7px 14px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
   color: var(--text-primary);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+}
+
+.subscribe-btn .btn-icon {
+  display: flex;
+  align-items: center;
+  color: #fbbf24;
 }
 
 .subscribe-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--border-hover);
   transform: translateY(-1px);
 }
@@ -113,21 +126,21 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.06);
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   border-radius: 50%;
   color: var(--text-primary);
   cursor: pointer;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
 }
 
 .icon-action-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.14);
   border-color: var(--border-hover);
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .icon-action-btn:active {
@@ -140,7 +153,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 4px;
+  margin-top: 6px;
   margin-bottom: 24px;
 }
 
@@ -150,14 +163,14 @@ body {
   height: 96px;
   border-radius: 50%;
   margin-bottom: 14px;
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(168, 85, 247, 0.4), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.7);
   transition: transform var(--transition-normal);
 }
 
 .avatar-wrapper:hover {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .profile-avatar {
@@ -166,124 +179,189 @@ body {
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  background-color: #111;
+  background-color: #0b0c10;
 }
 
-.profile-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-  margin-bottom: 8px;
+.profile-title-container {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  margin-bottom: 6px;
 }
 
-/* Alerta de Navegador In-App (Crucial para Instagram/TikTok) */
+.profile-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.profile-bio {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  max-width: 360px;
+  margin-bottom: 10px;
+}
+
+/* Pílula de Status Online */
+.profile-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #4ade80;
+  margin-bottom: 12px;
+}
+
+.status-dot {
+  width: 6.5px;
+  height: 6.5px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-dot 2.2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+/* Alerta Elegante para Navegador In-App */
 .inapp-notice-card {
-  margin: 6px 0 14px;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px dashed rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-md);
-  font-size: 0.78rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--text-notice);
+  margin: 4px 0 16px;
+  padding: 9px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  font-size: 0.77rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #cbd5e1;
   text-align: center;
-  max-width: 90%;
+  max-width: 95%;
+  backdrop-filter: blur(8px);
 }
 
-/* Linha de Ícones Sociais Rápidos */
+/* Barra de Ícones Rápidos */
 .socials-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 6px;
+  gap: 14px;
+  margin-top: 4px;
 }
 
 .social-icon-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-subtle);
   text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .social-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--border-hover);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.social-icon-instagram:hover {
+  box-shadow: 0 0 16px rgba(225, 48, 108, 0.4);
+  border-color: rgba(225, 48, 108, 0.5);
+}
+
+.social-icon-whatsapp:hover {
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.4);
+  border-color: rgba(37, 211, 102, 0.5);
+}
+
+.social-icon-tiktok:hover {
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .social-icon-btn:active {
   transform: scale(0.92);
 }
 
-/* Lista de Links (Botões Pílula Brancos) */
+/* ==========================================================================
+   Lista de Cartões Modernos (Dark Glass Cards - Autoral)
+   ========================================================================== */
 .links-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 13px;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .link-card {
-  display: grid;
-  grid-template-columns: 48px 1fr 48px;
+  display: flex;
   align-items: center;
+  gap: 14px;
   width: 100%;
-  min-height: 58px;
-  padding: 6px 8px;
-  background-color: var(--bg-card);
-  color: var(--text-dark);
+  min-height: 68px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  color: var(--text-primary);
   text-decoration: none;
-  border-radius: var(--radius-full);
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
-  cursor: pointer;
+  backdrop-filter: blur(14px);
   position: relative;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
 }
 
 .link-card:hover {
   transform: translateY(-2px);
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
   box-shadow: var(--shadow-hover);
-  background-color: #fafafa;
 }
 
 .link-card:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
-.link-card-text {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
-  text-align: center;
-  padding: 0 4px;
-  line-height: 1.25;
-}
-
-/* Emblema com ícone circular colorido à esquerda */
+/* Badge de Ícone à Esquerda (Squircle elegante com cor da rede) */
 .icon-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: var(--radius-badge);
   color: #ffffff;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-fast);
+}
+
+.link-card:hover .icon-badge {
+  transform: scale(1.05);
 }
 
 .icon-badge-whatsapp {
@@ -296,7 +374,7 @@ body {
 
 .icon-badge-tiktok {
   background-color: var(--brand-tiktok);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .icon-badge-instagram {
@@ -304,22 +382,83 @@ body {
 }
 
 .icon-badge-external {
-  background-color: #334155;
+  background-color: #1e293b;
 }
 
-/* Destaque sutil no link promocional */
+/* Conteúdo Central do Cartão (Título + Subtítulo) */
+.link-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  flex-grow: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+.link-card-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f8fafc;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-card-subtitle {
+  font-size: 0.77rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Seta Interativa à Direita */
+.link-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.link-card:hover .link-card-arrow {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Tag de Chip em Destaque */
+.card-chip-tag {
+  position: absolute;
+  top: -8px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+/* Cartão com Destaque Especial */
 .link-card-highlight {
-  border: 2px solid #ffffff;
-  animation: subtle-pulse 3s infinite ease-in-out;
+  border-color: var(--border-highlight);
+  background: rgba(56, 189, 248, 0.05);
 }
 
-@keyframes subtle-pulse {
-  0%, 100% {
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
-  }
+.link-card-highlight:hover {
+  border-color: rgba(56, 189, 248, 0.6);
+  background: rgba(56, 189, 248, 0.09);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.15);
 }
 
 /* Rodapé */
@@ -328,16 +467,18 @@ body {
   padding-top: 36px;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
+  font-size: 0.76rem;
+  letter-spacing: 0.01em;
 }
 
-/* Modal e Backdrop */
+/* ==========================================================================
+   Modais e Feedback
+   ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,12 +497,12 @@ body {
 .modal-card {
   width: 100%;
   max-width: 420px;
-  background: #121214;
-  border: 1px solid var(--border-subtle);
+  background: #111319;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-xl);
   padding: 26px;
   position: relative;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
   transform: translateY(16px) scale(0.96);
   transition: transform var(--transition-normal);
 }
@@ -376,7 +517,7 @@ body {
   right: 16px;
   width: 32px;
   height: 32px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   border: none;
   border-radius: 50%;
   color: var(--text-secondary);
@@ -390,7 +531,7 @@ body {
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
   color: #fff;
 }
 
@@ -415,10 +556,10 @@ body {
 
 .modal-input {
   width: 100%;
-  padding: 12px 16px;
-  background: #1c1c1f;
+  padding: 13px 16px;
+  background: #181a22;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   color: #fff;
   font-size: 0.9rem;
   outline: none;
@@ -426,24 +567,25 @@ body {
 }
 
 .modal-input:focus {
-  border-color: #fff;
+  border-color: #38bdf8;
 }
 
 .modal-submit-btn {
   width: 100%;
   padding: 13px;
-  background: #ffffff;
-  color: #000000;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: #ffffff;
   border: none;
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
+  border-radius: 12px;
+  font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 .modal-submit-btn:hover {
-  background: #e5e7eb;
+  opacity: 0.92;
 }
 
 .modal-submit-btn:active {
@@ -467,9 +609,9 @@ body {
   bottom: 28px;
   left: 50%;
   transform: translateX(-50%) translateY(40px);
-  background: #1f1f23;
+  background: #151822;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 10px 18px;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
@@ -477,7 +619,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
   opacity: 0;
   pointer-events: none;
   transition: transform var(--transition-normal), opacity var(--transition-normal);
@@ -491,6 +633,6 @@ body {
 
 /* Acessibilidade de foco */
 a:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid #38bdf8;
   outline-offset: 3px;
 }

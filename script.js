@@ -44,6 +44,37 @@ export function initApp(config) {
     document.title = `${profile.name} • Links Oficiais`;
   }
 
+  const verifiedBadge = document.getElementById('verifiedBadge');
+  if (verifiedBadge) {
+    if (profile.verified) {
+      verifiedBadge.innerHTML = ICONS.verified;
+      verifiedBadge.style.display = 'inline-flex';
+    } else {
+      verifiedBadge.style.display = 'none';
+    }
+  }
+
+  const profileBio = document.getElementById('profileBio');
+  if (profileBio) {
+    if (profile.bio) {
+      profileBio.textContent = profile.bio;
+      profileBio.style.display = 'block';
+    } else {
+      profileBio.style.display = 'none';
+    }
+  }
+
+  const statusBadge = document.getElementById('statusBadge');
+  const statusText = document.getElementById('statusText');
+  if (statusBadge) {
+    if (profile.statusBadge) {
+      if (statusText) statusText.textContent = profile.statusBadge;
+      statusBadge.style.display = 'inline-flex';
+    } else {
+      statusBadge.style.display = 'none';
+    }
+  }
+
   if (noticeCard) {
     if (profile.noticeText) {
       noticeCard.textContent = profile.noticeText;
@@ -186,6 +217,15 @@ function setupSubscribeModal(subConfig) {
   const feedback = document.getElementById('modalFeedback');
 
   if (!modal) return;
+
+  const titleEl = document.getElementById('subscribeModalTitle');
+  const subtitleEl = document.getElementById('subscribeModalSubtitle');
+  const submitBtn = document.getElementById('subscribeSubmitBtn');
+
+  if (titleEl && subConfig.modalTitle) titleEl.textContent = subConfig.modalTitle;
+  if (subtitleEl && subConfig.modalSubtitle) subtitleEl.textContent = subConfig.modalSubtitle;
+  if (input && subConfig.placeholder) input.placeholder = subConfig.placeholder;
+  if (submitBtn && subConfig.submitButtonText) submitBtn.textContent = subConfig.submitButtonText;
 
   const openModal = () => {
     modal.classList.add('active');

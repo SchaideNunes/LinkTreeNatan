@@ -11,22 +11,24 @@ export const linktreeConfig = {
   profile: {
     name: "Natan",
     handle: "@natan",
+    bio: "Ofertas exclusivas, conteúdos e novidades em primeira mão",
+    statusBadge: "Online agora",
     avatar: "assets/avatar.svg",
-    // Aviso exibido abaixo do nome (muito útil para evitar bloqueios do navegador do Instagram/TikTok)
-    noticeText: "👉 SE NÃO ABRIR, CLIQUE NOS 3 PONTINHOS E ABRA NO NAVEGADOR!",
+    // Aviso elegante exibido abaixo da bio para evitar bloqueios dos navegadores internos do Instagram/TikTok
+    noticeText: "💡 Dica: Toque nos 3 pontinhos e abra no NAVEGADOR para navegar sem limites",
     // Badge de verificado ao lado do nome (true / false)
-    verified: false
+    verified: true
   },
 
-  // Ícones rápidos de redes sociais (aparecem logo abaixo do aviso)
+  // Ícones rápidos de redes sociais (com efeitos modernos de iluminação ao passar o mouse)
   socials: [
-    {
-      platform: "tiktok",
-      url: "https://tiktok.com/@natan"
-    },
     {
       platform: "instagram",
       url: "https://instagram.com/natan"
+    },
+    {
+      platform: "tiktok",
+      url: "https://tiktok.com/@natan"
     },
     {
       platform: "whatsapp",
@@ -34,19 +36,22 @@ export const linktreeConfig = {
     }
   ],
 
-  // Botões principais de destaque (estilo pílula com ícones coloridos)
+  // Cartões principais (design moderno com título, subtítulo explicativo e tags de destaque)
   // Ícones disponíveis: "whatsapp", "instagram", "tiktok", "telegram", "external"
   links: [
     {
       id: "whatsapp",
       title: "Canal de Promoções WhatsApp",
+      subtitle: "Achadinhos, cupons e ofertas exclusivas direto no celular",
       url: "https://chat.whatsapp.com/exemplo",
       icon: "whatsapp",
+      badge: "CANAL VIP",
       highlight: true
     },
     {
       id: "telegram",
-      title: "Grupo de Promoções Telegram",
+      title: "Grupo de Ofertas Telegram",
+      subtitle: "Alertas rápidos 24 horas sem perder nada",
       url: "https://t.me/exemplo",
       icon: "telegram",
       highlight: false
@@ -54,6 +59,7 @@ export const linktreeConfig = {
     {
       id: "instagram",
       title: "Instagram Oficial",
+      subtitle: "Bastidores, novidades do dia a dia e stories",
       url: "https://instagram.com/natan",
       icon: "instagram",
       highlight: false
@@ -61,6 +67,7 @@ export const linktreeConfig = {
     {
       id: "tiktok",
       title: "TikTok Oficial",
+      subtitle: "Vídeos curtos, reviews e tendências",
       url: "https://tiktok.com/@natan",
       icon: "tiktok",
       highlight: false
@@ -74,20 +81,20 @@ export const linktreeConfig = {
     url: typeof window !== 'undefined' ? window.location.href : ""
   },
 
-  // Configurações do Botão "Inscrever-se" (Subscribe)
+  // Configurações do Botão de Inscrição / Notificações
   subscribe: {
     enabled: true,
-    buttonText: "Subscribe",
-    modalTitle: "Receba Novidades & Promoções",
-    modalSubtitle: "Cadastre-se para receber promoções exclusivas diretamente no seu WhatsApp ou e-mail.",
-    placeholder: "Seu WhatsApp ou E-mail",
-    submitButtonText: "Quero Receber",
-    successMessage: "✅ Inscrição confirmada com sucesso!"
+    buttonText: "Canal VIP",
+    modalTitle: "Faça Parte da Lista VIP",
+    modalSubtitle: "Receba alertas antecipados de promoções e conteúdos restritos diretamente no seu WhatsApp ou e-mail.",
+    placeholder: "Digite seu WhatsApp ou E-mail",
+    submitButtonText: "Quero Entrar na Lista",
+    successMessage: "✅ Inscrição confirmada! Em breve entraremos em contato."
   },
 
   // Rodapé
   footer: {
-    text: "Natan © 2026 • Todos os direitos reservados",
+    text: "Natan • Todos os direitos reservados",
     showWatermark: false
   }
 };

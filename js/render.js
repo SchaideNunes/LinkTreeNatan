@@ -2,7 +2,7 @@ import { sanitizeUrl } from './validator.js';
 import { ICONS } from './icons.js';
 
 /**
- * Cria o HTML para um botão de link estilo pílula (fiel à referência)
+ * Cria o HTML para um cartão de link moderno com suporte a subtítulo, tag de destaque e seta interativa
  * @param {object} link 
  * @returns {string} HTML string
  */
@@ -13,16 +13,31 @@ export function createLinkItemHTML(link) {
   const badgeClass = `icon-badge icon-badge-${iconKey}`;
   const highlightClass = link.highlight ? ' link-card-highlight' : '';
 
+  const badgeTagHTML = link.badge 
+    ? `<span class="card-chip-tag">${ICONS.sparkles || ''} ${link.badge}</span>` 
+    : '';
+
+  const subtitleHTML = link.subtitle 
+    ? `<span class="link-card-subtitle">${link.subtitle}</span>` 
+    : '';
+
   return `
     <a href="${safeUrl}" 
        target="_blank" 
        rel="noopener noreferrer" 
        class="link-card${highlightClass}" 
        data-id="${link.id || iconKey}">
-      <span class="${badgeClass}">
+      ${badgeTagHTML}
+      <div class="${badgeClass}">
         ${iconSvg}
-      </span>
-      <span class="link-card-text">${link.title}</span>
+      </div>
+      <div class="link-card-content">
+        <span class="link-card-text">${link.title}</span>
+        ${subtitleHTML}
+      </div>
+      <div class="link-card-arrow" aria-hidden="true">
+        ${ICONS.chevronRight}
+      </div>
     </a>
   `.trim();
 }
@@ -41,7 +56,7 @@ export function createSocialIconHTML(social) {
     <a href="${safeUrl}" 
        target="_blank" 
        rel="noopener noreferrer" 
-       class="social-icon-btn" 
+       class="social-icon-btn social-icon-${platform}" 
        aria-label="${platform}">
       ${iconSvg}
     </a>
