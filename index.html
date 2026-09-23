@@ -258,8 +258,8 @@ body {
 }
 
 .inapp-notice-card {
-  margin: 4px 0 16px;
-  padding: 9px 15px;
+  margin: 18px 0 0;
+  padding: 10px 16px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-card);
@@ -268,7 +268,7 @@ body {
   line-height: 1.4;
   color: #cbd5e1;
   text-align: center;
-  max-width: 95%;
+  width: 100%;
   backdrop-filter: blur(8px);
 }
 
@@ -693,11 +693,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
           <span id="statusText" class="status-text">Online agora</span>
         </div>
 
-        <!-- Alerta Discreto e Elegante para Navegadores In-App -->
-        <div id="noticeCard" class="inapp-notice-card" role="note">
-          💡 Dica: Toque nos 3 pontinhos e abra no NAVEGADOR para navegar sem limites
-        </div>
-
         <!-- Barra de Ícones Rápidos das Redes Sociais -->
         <nav id="socialsBar" class="socials-bar" aria-label="Redes Sociais">
           <a href="https://instagram.com/natan" target="_blank" rel="noopener noreferrer" class="social-icon-btn social-icon-instagram" aria-label="instagram">
@@ -767,6 +762,11 @@ a:focus-visible, button:focus-visible, input:focus-visible {
           </div>
         </a>
       </section>
+
+      <!-- Alerta Discreto e Elegante para Navegadores In-App (Posicionado na parte inferior) -->
+      <div id="noticeCard" class="inapp-notice-card" role="note">
+        💡 Dica: Toque nos 3 pontinhos e abra no NAVEGADOR para navegar sem limites
+      </div>
     </main>
 
     <!-- Rodapé -->
