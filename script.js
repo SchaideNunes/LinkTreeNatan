@@ -99,52 +99,63 @@ function setupShareAction(shareConfig) {
   if (!shareBtn) return;
 
   shareBtn.addEventListener('click', async () => {
+    const isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || 
+      (navigator.maxTouchPoints > 0 && window.innerWidth <= 768);
+
     const shareData = {
       title: shareConfig.title || document.title,
       text: shareConfig.text || 'Acesse meus links oficiais:',
       url: window.location.href
     };
 
-    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+    if (isMobileDevice && navigator.share && navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
         return;
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.log('Fallback para cópia de link:', err);
-        } else {
-          return;
-        }
+        if (err.name === 'AbortError') return;
       }
     }
 
-    // Fallback: Copiar para área de transferência
-    copyToClipboard(window.location.href);
+    // No desktop ou como fallback: copia o link e exibe toast imediato
+    await copyToClipboard(window.location.href);
   });
 }
 
 /**
- * Copia texto para o clipboard com suporte amplo
+ * Copia texto para o clipboard com compatibilidade total
  */
 async function copyToClipboard(text) {
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+  let copied = false;
+
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
       await navigator.clipboard.writeText(text);
-    } else {
+      copied = true;
+    } catch (e) {
+      // Falha permissão clipboard
+    }
+  }
+
+  if (!copied) {
+    try {
       const textarea = document.createElement('textarea');
       textarea.value = text;
       textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
+      textarea.style.left = '-9999px';
+      textarea.style.top = '0';
       document.body.appendChild(textarea);
+      textarea.focus();
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
+      copied = true;
+    } catch (err) {
+      console.warn('Fallback execCommand falhou', err);
     }
-    showToast('Link copiado para a área de transferência!');
-  } catch (err) {
-    console.error('Falha ao copiar link:', err);
-    showToast('Link: ' + window.location.href);
   }
+
+  showToast('Link copiado para a área de transferência!');
 }
 
 /**
