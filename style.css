@@ -636,3 +636,196 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 3px;
 }
+
+/* ==========================================================================
+   Modo Compacto Mobile - Encaixe Perfeito em 1 tela sem scroll (Single Viewport)
+   ========================================================================== */
+@media (max-width: 600px), (max-height: 850px) {
+  html, body {
+    height: 100%;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: hidden;
+  }
+
+  body {
+    padding: env(safe-area-inset-top, 4px) 12px env(safe-area-inset-bottom, 6px);
+  }
+
+  .app-container {
+    height: 100%;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2px;
+  }
+
+  .top-actions-bar {
+    padding: 2px 2px;
+  }
+
+  .subscribe-btn {
+    padding: 4px 10px;
+    font-size: 0.70rem;
+    gap: 4px;
+  }
+
+  .icon-action-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile-section {
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+
+  .avatar-wrapper {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 4px;
+    padding: 2px;
+  }
+
+  .avatar-wrapper svg,
+  .avatar-svg-element {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .profile-title-container {
+    margin-bottom: 1px;
+  }
+
+  .profile-title {
+    font-size: 1.1rem;
+  }
+
+  .profile-bio {
+    font-size: 0.74rem;
+    line-height: 1.2;
+    margin-bottom: 3px;
+    max-width: 300px;
+  }
+
+  .profile-status-pill {
+    padding: 2px 7px;
+    font-size: 0.65rem;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .socials-bar {
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .social-icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-icon-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .links-list {
+    gap: 6px;
+    margin-top: 2px;
+  }
+
+  .link-card {
+    min-height: 44px;
+    padding: 6px 12px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .icon-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .icon-badge svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .link-card-content {
+    gap: 0;
+  }
+
+  .link-card-text {
+    font-size: 0.85rem;
+  }
+
+  .link-card-subtitle {
+    font-size: 0.66rem;
+    line-height: 1.1;
+  }
+
+  .card-chip-tag {
+    top: -6px;
+    right: 10px;
+    padding: 1px 6px;
+    font-size: 0.55rem;
+  }
+
+  .link-card-arrow svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .inapp-notice-card {
+    margin: 6px 0 0;
+    padding: 5px 10px;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    border-radius: 10px;
+  }
+
+  .footer-section {
+    padding-top: 4px;
+    font-size: 0.66rem;
+    margin-top: auto;
+  }
+}
+
+/* Telas com altura menor que 700px (ex: iPhone SE, Galaxy A) */
+@media (max-height: 700px) and (max-width: 600px) {
+  .avatar-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 2px;
+  }
+
+  .profile-bio {
+    font-size: 0.70rem;
+    margin-bottom: 2px;
+  }
+
+  .link-card {
+    min-height: 38px;
+    padding: 4px 10px;
+  }
+
+  .link-card-subtitle {
+    display: none;
+  }
+
+  .inapp-notice-card {
+    margin: 4px 0 0;
+    padding: 4px 8px;
+    font-size: 0.64rem;
+  }
+}
+
+/* Fallback de segurança para telas minúsculas */
+@media (max-height: 500px) {
+  html, body {
+    overflow-y: auto !important;
+  }
+}
